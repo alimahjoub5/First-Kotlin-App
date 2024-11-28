@@ -49,15 +49,18 @@ class StopwatchViewModel(application: Application) : AndroidViewModel(applicatio
         }, 0, 10)
 
         viewModelScope.launch {
-            currentSessionId = stopwatchDao.insertSession(
+            // Ne pas inclure l'ID ici. L'ID sera auto-généré.
+            val sessionId = stopwatchDao.insertSession(
                 StopwatchSession(
                     startTime = System.currentTimeMillis(),
                     endTime = 0,
                     totalTime = 0
                 )
             )
+            currentSessionId = sessionId // Enregistrer l'ID généré
         }
     }
+
 
     private fun stopStopwatch() {
         _isRunning.value = false

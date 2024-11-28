@@ -108,17 +108,6 @@ fun StopwatchScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Button to activate voice commands
-        Button(
-            onClick = onSpeechRecognition,
-            modifier = Modifier
-                .size(64.dp)
-                .semantics {
-                    contentDescription = "Activate voice commands"
-                }
-        ) {
-            Text("Voice")
-        }
     }
 }
 
